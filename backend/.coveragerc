@@ -1,0 +1,15 @@
+[run]
+source = app
+branch = True
+omit =
+    tests/*
+    */__pycache__/*
+    */.venv/*
+
+[report]
+fail_under = 100
+show_missing = True
+skip_covered = False
+
+[html]
+directory = htmlcov

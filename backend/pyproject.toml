@@ -1,0 +1,21 @@
+[project]
+name = "loupe-backend"
+version = "0.1.0"
+description = "Loupe legal contract risk inspection backend"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+addopts = "--strict-markers --cov=app --cov-report=term-missing --cov-fail-under=100"
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = false

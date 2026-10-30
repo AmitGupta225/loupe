@@ -1,0 +1,363 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: "Newsreader", "Source Serif 4", serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+  --color-alabaster: #f8f7f4;
+  --color-stone: #f1efea;
+  --color-carbon: #111111;
+  --color-slate: #52525b;
+  --color-hairline: #e4e2dd;
+  --color-obsidian: #18181b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-alabaster);
+  color: var(--color-carbon);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+.font-sans {
+  font-family: var(--font-sans);
+}
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.pulse-highlight {
+  animation: pulse-border 1.2s ease-in-out;
+}
+
+@keyframes pulse-border {
+  0% {
+    outline-color: transparent;
+  }
+  30% {
+    outline: 2px solid #18181b;
+  }
+  100% {
+    outline-color: transparent;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Accessibility overrides — applied via html classes */
+html.a11y-high-contrast {
+  filter: contrast(1.25);
+}
+html.a11y-dark-contrast {
+  filter: contrast(1.3) brightness(0.92);
+}
+html.a11y-invert {
+  filter: invert(1) hue-rotate(180deg);
+}
+html.a11y-saturated {
+  filter: saturate(1.85) contrast(1.05);
+}
+/* big cursor — visibly large black arrow with white outline (48px), hotspot at tip */
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24'><path d='M4 4 L15.5 15.5 L10.8 15.5 L14.2 21.2 L10.6 22.2 L7.1 15.5 L2.5 17.2 Z' fill='%23000' stroke='%23fff' stroke-width='1.4' stroke-linejoin='round'/></svg>")
+      3 3,
+    auto !important;
+}
+html.a11y-line-height body {
+  line-height: 1.9 !important;
+}
+html.a11y-line-height p,
+html.a11y-line-height li,
+html.a11y-line-height blockquote {
+  line-height: 1.9 !important;
+}
+html.a11y-text-spacing body {
+  letter-spacing: 0.06em !important;
+  word-spacing: 0.14em !important;
+}
+
+/* Dark mode — strict enterprise: flat zinc neutrals, subtle borders, no gradients/glows (anti-ai-slop) */
+html.dark {
+  color-scheme: dark;
+}
+html.dark body {
+  background: #09090b;
+  color: #e4e4e7;
+}
+html.dark .bg-white {
+  background-color: #18181b !important;
+}
+html.dark .bg-zinc-50 {
+  background-color: #09090b !important;
+}
+html.dark .bg-zinc-100 {
+  background-color: #1f1f23 !important;
+}
+html.dark .bg-white\/60 {
+  background-color: rgba(18, 18, 20, 0.7) !important;
+}
+html.dark aside[data-testid="sidebar"],
+html.dark aside[data-testid="mobile-sidebar"] {
+  background: #18181b !important;
+  border-right-color: #27272a !important;
+}
+html.dark .text-zinc-900 {
+  color: #fafafa !important;
+}
+html.dark .text-zinc-700 {
+  color: #d4d4d8 !important;
+}
+html.dark .text-zinc-600 {
+  color: #a1a1aa !important;
+}
+html.dark .text-zinc-500 {
+  color: #8a8a93 !important;
+}
+html.dark .text-zinc-400 {
+  color: #8a8a93 !important;
+}
+html.dark .border-zinc-200 {
+  border-color: #27272a !important;
+}
+html.dark .border-zinc-300 {
+  border-color: #3f3f46 !important;
+}
+html.dark .border-zinc-100 {
+  border-color: #27272a !important;
+}
+html.dark input,
+html.dark textarea {
+  background-color: #18181b !important;
+  border-color: #3f3f46 !important;
+  color: #fafafa !important;
+}
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #71717a !important;
+}
+html.dark .placeholder\:text-zinc-400::placeholder {
+  color: #71717a !important;
+}
+/* primary actions — invert to light on dark */
+html.dark .bg-zinc-900 {
+  background-color: #fafafa !important;
+  color: #09090b !important;
+}
+html.dark .bg-zinc-900.text-white {
+  color: #09090b !important;
+}
+html.dark .bg-zinc-900.border-zinc-900 {
+  border-color: #3f3f46 !important;
+}
+/* selected state in sidebar / a11y panel: icon + label were white on light pill — force dark */
+html.dark .bg-zinc-900 .text-white,
+html.dark .bg-zinc-900.text-white .text-white {
+  color: #09090b !important;
+}
+html.dark .bg-zinc-900 svg {
+  color: #09090b !important;
+}
+html.dark .hover\:bg-zinc-800:hover {
+  background-color: #e4e4e7 !important;
+}
+html.dark .hover\:bg-zinc-100:hover {
+  background-color: #27272a !important;
+}
+html.dark [data-testid="upload-dropzone"]:hover,
+html.dark [data-testid="upload-dropzone"].hover\:bg-\[\#eceae7\]:hover {
+  background-color: #232326 !important;
+  border-color: #52525b !important;
+}
+html.dark [data-testid="upload-dropzone"].bg-white {
+  background-color: #18181b !important;
+}
+html.dark [data-testid="upload-dropzone"].bg-zinc-200 {
+  background-color: #27272a !important;
+}
+html.dark [data-testid="upload-dropzone"].border-zinc-900 {
+  border-color: #a1a1aa !important;
+}
+html.dark [data-testid="upload-dropzone"].hover\:border-zinc-500:hover {
+  border-color: #71717a !important;
+}
+html.dark .hover\:bg-zinc-50:hover {
+  background-color: #27272a !important;
+}
+html.dark .hover\:bg-white:hover {
+  background-color: #27272a !important;
+}
+html.dark .hover\:border-zinc-400:hover {
+  border-color: #52525b !important;
+}
+html.dark .border-zinc-300 {
+  border-color: #3f3f46 !important;
+}
+html.dark .hover\:border-zinc-300:hover {
+  border-color: #3f3f46 !important;
+}
+/* subtle surfaces */
+html.dark .bg-red-50 {
+  background-color: #2c0a0a !important;
+}
+html.dark .bg-green-50 {
+  background-color: #0a1f12 !important;
+}
+html.dark .bg-yellow-50 {
+  background-color: #241a04 !important;
+}
+html.dark .bg-orange-50 {
+  background-color: #251204 !important;
+}
+html.dark .bg-red-100 {
+  background-color: #3a0e0e !important;
+}
+html.dark .bg-orange-100 {
+  background-color: #3b1905 !important;
+}
+html.dark .bg-yellow-100 {
+  background-color: #2e2306 !important;
+}
+html.dark .border-red-300 {
+  border-color: #7f1d1d !important;
+}
+html.dark .border-orange-300 {
+  border-color: #9a3412 !important;
+}
+html.dark .border-yellow-300 {
+  border-color: #854d0e !important;
+}
+html.dark .hover\:bg-red-200:hover {
+  background-color: #4c0f0f !important;
+}
+html.dark .hover\:bg-orange-200:hover {
+  background-color: #4a1e06 !important;
+}
+html.dark .hover\:bg-yellow-200:hover {
+  background-color: #3d2f08 !important;
+}
+/* semantic accents on dark */
+html.dark .text-red-700 {
+  color: #fca5a5 !important;
+}
+html.dark .text-orange-700 {
+  color: #fdba74 !important;
+}
+html.dark .text-yellow-700 {
+  color: #fde68a !important;
+}
+html.dark .text-red-600 {
+  color: #f87171 !important;
+}
+html.dark .border-red-200 {
+  border-color: #7f1d1d !important;
+}
+html.dark .bg-red-50\/40 {
+  background-color: rgba(69, 10, 10, 0.5) !important;
+}
+/* quotes with inline styles — force dark (browser normalizes hex to rgb, so match universal) */
+html.dark [data-testid^="quote-"] {
+  color: #e4e4e7 !important;
+  background-color: #2c0a0a !important;
+  border-left-color: #7f1d1d !important;
+}
+html.dark [data-testid^="quote-"][style*="F97316"],
+html.dark [data-testid^="quote-"][style*="249, 115"] {
+  background-color: #251204 !important;
+  border-left-color: #9a3412 !important;
+}
+html.dark [data-testid^="quote-"][style*="EAB308"],
+html.dark [data-testid^="quote-"][style*="234, 179"] {
+  background-color: #241a04 !important;
+  border-left-color: #854d0e !important;
+}
+/* drawer quote / redline blocks also use inline border colors */
+html.dark [data-testid="drawer-quote"] {
+  background-color: rgba(44, 10, 10, 0.6) !important;
+  border-left-color: #dc2626 !important;
+}
+html.dark [data-testid="inline-diff"] p[style] {
+  color: #e4e4e7 !important;
+}
+html.dark [data-testid="inline-diff"] p[style*="FEF2F2"],
+html.dark [data-testid="inline-diff"] p[style*="254, 242"] {
+  background: #2c0a0a !important;
+}
+html.dark [data-testid="inline-diff"] p[style*="F0FDF4"],
+html.dark [data-testid="inline-diff"] p[style*="240, 253"] {
+  background: #0a1f12 !important;
+}
+/* RiskGauge labels */
+html.dark #gauge-label-low,
+html.dark #gauge-label-med,
+html.dark #gauge-label-high {
+  fill: #a1a1aa !important;
+}
+html.dark [data-testid="risk-gauge"] text {
+  fill: #a1a1aa !important;
+}
+/* gauge needle visible on dark */
+html.dark [data-testid="gauge-needle"] {
+  stroke: #fafafa !important;
+}
+html.dark [data-testid="gauge-svg"] circle[fill="#18181B"] {
+  fill: #fafafa !important;
+}
+html.dark [data-testid="gauge-svg"] circle[stroke="white"] {
+  stroke: #09090b !important;
+}
+/* error banners */
+html.dark [data-testid="error-banner"] {
+  background-color: #2c0a0a !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+html.dark [data-testid="intake-error"],
+html.dark [data-testid="url-api-error"] {
+  background-color: #2c0a0a !important;
+  border-color: #7f1d1d !important;
+  color: #fca5a5 !important;
+}
+/* tables */
+html.dark thead tr {
+  background-color: #27272a !important;
+}
+html.dark tbody tr {
+  border-color: #27272a !important;
+}
+/* overlays */
+html.dark [data-testid="analysis-overlay"] {
+  background-color: rgba(9, 9, 11, 0.7) !important;
+}
+html.dark [data-testid="mobile-overlay"],
+html.dark [data-testid="drawer-backdrop"] {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
